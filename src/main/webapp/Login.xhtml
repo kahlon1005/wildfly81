@@ -1,0 +1,32 @@
+<ui:composition template="/templates/plain.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<h:form id="loginForm">
+			<p:panelGrid columns="3">
+				<p:outputLabel for="username" value="Username" />
+				<p:inputText id="username" value="#{loginController.username}">
+					<f:validateLength minimum="1" />
+				</p:inputText>
+				<h:message class="error" for="username" />
+
+				<p:outputLabel for="password" value="Password" />
+				<p:password id="password" value="#{loginController.password}"
+					required="true">
+					<f:validateLength minimum="1" />
+				</p:password>
+
+			</p:panelGrid>
+
+			<h:message class="error" for="password" />
+			<p:commandButton styleClass="button" value="Login" update="@form"
+				actionListener="#{loginController.login}" type="submit" />
+
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
